@@ -1,5 +1,4 @@
 # Playbook de Exemplo:
-
 - name: Meu primeiro Playbook
   hosts: all
   tasks:

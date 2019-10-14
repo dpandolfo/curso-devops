@@ -1,0 +1,7 @@
+---
+# tasks file for git
+- name: Instalacao do pacote cliente git Red Hat
+  yum:
+   name: git
+   state: latest
+  when: ansible_os_family == "RedHat"

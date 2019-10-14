@@ -1,0 +1,5 @@
+---
+- name: executando roles no host docker
+  hosts: docker
+  roles:
+   - docker

@@ -1,0 +1,6 @@
+---
+- name: executando roles no host automation
+  hosts: automation
+  roles:
+   - rundeck
+   - git

@@ -1,0 +1,15 @@
+---
+# tasks file for jenkins
+- name: Importando a chave do Jenkins
+  rpm_key:
+   key: https://jenkins-ci.org/redhat/jenkins-ci.org.key
+   state: present
+   validate_certs: no
+
+- name: Adiciando o repo Jenkins
+  get_url:
+   url: http://pkg.jenkins-ci.org/redhat/jenkins.repo
+   dest: /etc/yum.repos.d/jenkins.repo
+
+- name: Install Jenkins
+  yum: name=jenkins state=present

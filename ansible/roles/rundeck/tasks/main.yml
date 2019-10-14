@@ -1,0 +1,10 @@
+---
+# tasks file for rundeck
+- name: Download do Repo
+  yum: name=http://repo.rundeck.org/latest.rpm state=present
+
+
+- name: Instalacao do Rundeck
+  yum: name={{ item }} state=present
+  with_items:
+   - rundeck
