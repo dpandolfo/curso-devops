@@ -1,0 +1,19 @@
+# Playbook de Exemplo:
+
+- name: Meu primeiro Playbook
+  hosts: all
+  tasks:
+    - name: Atualizar o Resolv.conf
+      copy: src=resolv.conf dest=/etc/resolv.conf
+      
+- name: Garantir a instalação do pacote ls em todas as maquinas
+  hosts: devops docker
+  tasks:
+    - name: Instalar pacotes basicos
+      apt: name={{ item }} update_cache=yes state=present
+      with_items:
+        - vim
+        - nano
+        - sl
+        - ccze
+        - dnsutils
