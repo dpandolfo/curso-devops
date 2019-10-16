@@ -10,12 +10,12 @@
 
 - name: Baixar o pacote com o repo get_url
   get_url:
-   url: "http://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/.deb.sh"
-   dest: /opt/.deb.sh
+   url: "http://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh"
+   dest: /opt/script.deb.sh
    #owner: root 
 
 - name: Instalacao do repo do gitlab
-  shell: bash /opt/.deb.sh
+  shell: bash /opt/script.deb.sh
 
 - name: Instalacao do Gitlab
   apt:
