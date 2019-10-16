@@ -1,0 +1,13 @@
+wordpress_dexter:
+  image: wordpress
+  links:
+    - mysql_dexter:mysql
+  ports:
+    - "8080:80"
+
+mysql_dexter:
+  image: mariadb:10.1
+  environment:
+    MYSQL_ROOT_PASSWORD: dexter
+  volumes:
+    - "/opt/mysql-data:/var/lib/mysql"
