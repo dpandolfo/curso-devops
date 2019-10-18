@@ -1,0 +1,27 @@
+---
+# tasks file for create
+
+- name: Validando o Virtual Host
+  command: test -f /etc/nginx/sites-enabled/green.conf
+  register: vhost
+  ignore_errors: yes
+
+- name: Remover green env
+  command: rm -f /etc/nginx/sites-enabled/green.conf
+  when: vhost.rc == 0
+
+- name: Deploy blue env
+  copy:
+    src: /etc/ansible/roles/verificar/files/blue.conf
+    dest: /etc/nginx/sites-enabled/blue.conf
+  when: vhost.rc == 0
+
+- name: Remove blue env
+  command: rm -f /etc/nginx/sites-enabled/blue.conf
+  when: vhost.rc == 1
+ 
+- name: Deploy green env
+  copy:
+    src: /etc/ansible/roles/verificar/files/green.conf
+    dest: /etc/nginx/sites-enabled/green.conf
+  when: vhost.rc == 1
