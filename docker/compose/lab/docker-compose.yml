@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  db:
+    container_name: mysql
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: dexter
+      MYSQL_DATABASE: test_db
+      MYSQL_USER: devops
+      MYSQL_PASSWORD: devops
+    ports:
+      - "9906:3306"
+    volumes:
+      - "/opt/mysql-data:/var/lib/mysql"
+    networks:
+      dexterlan:
+        ipv4_address: 10.0.0.43
+
+networks:
+  dexterlan:
+    external: true
